@@ -1,10 +1,15 @@
+/* Columns block - supports multiple layout variants */
+
 .columns > div {
   display: flex;
   flex-direction: column;
+  gap: 16px;
 }
 
 .columns img {
   width: 100%;
+  height: auto;
+  display: block;
 }
 
 .columns > div > div {
@@ -22,12 +27,166 @@
 @media (width >= 900px) {
   .columns > div {
     align-items: center;
-    flex-direction: unset;
-    gap: 24px;
+    flex-direction: row;
+    gap: 0;
   }
 
   .columns > div > div {
     flex: 1;
     order: unset;
+  }
+}
+
+/* === 4-Column Stats Layout === */
+
+/* stylelint-disable no-descending-specificity */
+
+/* Stats: blue number + gray label centered in each column */
+.columns.columns-4-cols > div {
+  flex-flow: row wrap;
+  justify-content: center;
+  gap: 0;
+}
+
+.columns.columns-4-cols > div > div {
+  flex: 0 0 50%;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+  order: unset;
+}
+
+.columns.columns-4-cols > div > div p:first-child {
+  margin: 0;
+}
+
+.columns.columns-4-cols > div > div p:first-child strong {
+  font-family: var(--label-font-family);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--accent-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 120px;
+  border: 2px solid var(--accent-blue);
+  border-radius: 50%;
+  margin: 0 auto 20px;
+}
+
+.columns.columns-4-cols > div > div p:last-child {
+  font-family: var(--label-font-family);
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin: 0;
+}
+
+@media (width >= 900px) {
+  .columns.columns-4-cols > div > div {
+    flex: 1;
+    padding: 20px;
+  }
+
+  .columns.columns-4-cols > div > div p:first-child strong {
+    width: 150px;
+    height: 150px;
+    font-size: 30px;
+  }
+}
+
+/* === 2-Column Data Grid Layout === */
+
+/* Stadium/spectators with image column + text column */
+.columns.columns-2-cols > div {
+  gap: 0;
+}
+
+.columns.columns-2-cols > div > div {
+  order: unset;
+}
+
+/* Image columns in 2-col layout: contain images edge-to-edge */
+.columns.columns-2-cols > div > .columns-img-col {
+  overflow: hidden;
+}
+
+.columns.columns-2-cols > div > .columns-img-col img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Text cells in 2-col grid */
+.columns.columns-2-cols > div > div:not(.columns-img-col) {
+  padding: 30px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.columns.columns-2-cols > div > div strong {
+  font-family: var(--label-font-family);
+  font-weight: 700;
+}
+
+.columns.columns-2-cols > div > div em {
+  font-family: var(--label-font-family);
+  font-style: normal;
+  color: var(--text-muted);
+  font-size: var(--body-font-size-xs);
+}
+
+@media (width >= 900px) {
+  .columns.columns-2-cols > div {
+    align-items: stretch;
+  }
+
+  .columns.columns-2-cols > div > div:not(.columns-img-col) {
+    padding: 40px 32px;
+  }
+}
+
+/* === 3-Column Mosaic (Photo Gallery) === */
+
+/* Edge-to-edge images in grid layout */
+.columns.columns-3-cols {
+  margin: 0;
+}
+
+.columns-container:has(.columns-3-cols) > div {
+  padding: 0;
+  max-width: unset;
+}
+
+.columns.columns-3-cols > div {
+  gap: 0;
+  align-items: stretch;
+}
+
+.columns.columns-3-cols > div > div {
+  order: unset;
+}
+
+.columns.columns-3-cols > div > div img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* stylelint-enable no-descending-specificity */
+
+@media (width >= 900px) {
+  .columns.columns-3-cols > div {
+    flex-direction: row;
+    gap: 0;
+  }
+
+  .columns.columns-3-cols > div > div {
+    flex: 1;
+    min-height: 300px;
   }
 }

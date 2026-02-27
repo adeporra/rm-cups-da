@@ -1,0 +1,26 @@
+{
+  "templates": [
+    {
+      "name": "european-cup-landing",
+      "urls": [
+        "https://www.realmadrid.com/landings/european-cups-won/fifth-european-cup.html"
+      ],
+      "description": "Landing page template for Real Madrid European Cup victories featuring hero banner, match result, editorial summary, data grid (stadium, lineup, teams, goals), stats, trivia, and photo mosaic",
+      "blocks": [
+        {
+          "name": "hero",
+          "instances": [".m_banner"]
+        },
+        {
+          "name": "section-highlight",
+          "instances": [".info_row"],
+          "section": "highlight"
+        },
+        {
+          "name": "columns",
+          "instances": [".m_grid", ".m_stats_group", ".m_details", ".m_mosaic"]
+        }
+      ]
+    }
+  ]
+}

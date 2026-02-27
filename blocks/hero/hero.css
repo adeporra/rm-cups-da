@@ -1,37 +1,100 @@
+/* Hero block - Full-bleed banner with background image and centered text overlay */
+
+/* Remove wrapper constraints for full-bleed */
 .hero-container .hero-wrapper {
+  max-width: unset;
+  padding: 0;
+}
+
+.hero-container {
+  margin: 0;
+  padding: 0;
+}
+
+.hero-container > div {
   max-width: unset;
   padding: 0;
 }
 
 .hero {
   position: relative;
-  padding: 40px 24px;
-  min-height: 300px;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
-.hero h1 {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  color: var(--background-color);
+/* Row 1: Background image (absolute positioned) */
+.hero > div:first-child {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
 }
 
 .hero picture {
-  position: absolute;
-  z-index: -1;
-  inset: 0;
-  object-fit: cover;
-  box-sizing: border-box;
+  display: block;
+  height: 100%;
+  width: 100%;
 }
 
 .hero img {
   object-fit: cover;
   width: 100%;
   height: 100%;
+  display: block;
+}
+
+/* Row 2: Content overlay (centered text) */
+.hero > div:last-child {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 60px 24px;
+  min-height: 350px;
+}
+
+.hero h1 {
+  font-family: var(--heading-font-family);
+  font-size: 80px;
+  font-weight: 400;
+  color: #fff;
+  text-transform: uppercase;
+  line-height: 1;
+  margin: 0 0 20px;
+}
+
+.hero p {
+  font-family: var(--label-font-family);
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+  text-transform: uppercase;
+  line-height: 1;
+  margin: 0;
 }
 
 @media (width >= 900px) {
   .hero {
-    padding: 40px 32px;
+    min-height: 500px;
+  }
+
+  .hero > div:last-child {
+    padding: 80px 32px;
+    min-height: 450px;
+  }
+
+  .hero h1 {
+    font-size: 140px;
+    line-height: 140px;
+    margin: 0 0 25px;
+  }
+
+  .hero p {
+    font-size: 25px;
+    line-height: 25px;
   }
 }

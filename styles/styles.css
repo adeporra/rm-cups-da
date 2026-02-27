@@ -360,6 +360,7 @@ main .section.light {
 
 main .section.light > div {
   text-align: center;
+  padding: 80px 24px;
 }
 
 main .section.light img {
@@ -368,21 +369,57 @@ main .section.light img {
   vertical-align: middle;
 }
 
-main .section.light h2 {
+main .section.light p {
   font-family: var(--label-font-family);
   font-size: 20px;
   font-weight: 700;
   text-transform: uppercase;
   color: var(--dark-color);
+  margin: 0.3em 0;
+}
+
+main .section.light h2 {
+  font-family: var(--body-font-family);
+  font-size: var(--heading-font-size-xl);
+  font-weight: 400;
+  text-transform: uppercase;
+  color: var(--dark-color);
+  line-height: 1;
+  margin: 0.3em 0;
+}
+
+main .section.light p:first-child img {
+  max-height: 60px;
 }
 
 main .section.light p:has(strong) {
   font-family: var(--heading-font-family);
-  font-size: var(--body-font-size-m);
+  font-size: var(--heading-font-size-l);
+  font-weight: 400;
+  line-height: 1.2;
+  margin: 0.8em 0;
 }
 
-main .section.light p:first-child img {
-  max-height: 50px;
+main .section.light p:has(strong) strong {
+  font-family: var(--heading-font-family);
+}
+
+main .section.light p:has(strong) img {
+  max-height: 100px;
+}
+
+@media (width >= 900px) {
+  main .section.light > div {
+    padding: 100px 32px;
+  }
+
+  main .section.light p:has(strong) {
+    font-size: 48px;
+  }
+
+  main .section.light p:has(strong) img {
+    max-height: 120px;
+  }
 }
 
 /* Cool gray-green background (editorial summary) */
